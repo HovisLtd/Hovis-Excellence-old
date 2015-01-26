@@ -7,7 +7,6 @@ namespace Hovis.Compliance.Web.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Hovis.Compliance.Web.ApplicationDbContext";
         }
 
         protected override void Seed(ApplicationDbContext context)
@@ -15,6 +14,8 @@ namespace Hovis.Compliance.Web.Migrations
             SeedRoles(context);
             SeedUsers(context);
             SeedApplications(context);
+            SeedDocumentCategories(context);
+            SeedDocumentTypes(context);
 
             //  This method will be called after migrating to the latest version.
 

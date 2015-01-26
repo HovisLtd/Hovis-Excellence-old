@@ -8,12 +8,68 @@ namespace Hovis.Compliance.Web.Migrations
         public override void Up()
         {
             CreateTable(
+                "dbo.HovisExcellenceApplications",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        ApplicationKey = c.String(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.DocumentCategories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Documents",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Title = c.String(nullable: false),
+                        IssueNumber = c.String(),
+                        IssueDate = c.DateTime(nullable: false),
+                        Description = c.String(),
+                        Owner = c.String(),
+                        ReviewPeriodInMonths = c.Int(nullable: false),
+                        FileLink = c.String(nullable: false),
+                        ApplicationId = c.Int(nullable: false),
+                        DocumentTypeId = c.Int(nullable: false),
+                        DocumentCategoryId = c.Int(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.HovisExcellenceApplications", t => t.ApplicationId, cascadeDelete: true)
+                .ForeignKey("dbo.DocumentCategories", t => t.DocumentCategoryId, cascadeDelete: true)
+                .ForeignKey("dbo.DocumentTypes", t => t.DocumentTypeId, cascadeDelete: true)
+                .Index(t => t.ApplicationId)
+                .Index(t => t.DocumentTypeId)
+                .Index(t => t.DocumentCategoryId);
+            
+            CreateTable(
+                "dbo.DocumentTypes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        DateCreated = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
                 "dbo.People",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         FirstName = c.String(nullable: false),
-                        LastName = c.String(),
+                        LastName = c.String(nullable: false),
                         EmailAddress = c.String(nullable: false),
                         EmployeeNumber = c.String(),
                         RoleId = c.Int(nullable: false),
@@ -97,8 +153,8 @@ namespace Hovis.Compliance.Web.Migrations
                         Id = c.String(nullable: false, maxLength: 128),
                         FirstName = c.String(),
                         LastName = c.String(),
-                        CreatedDate = c.DateTime(nullable: false),
                         Email = c.String(maxLength: 256),
+                        CreatedDate = c.DateTime(nullable: false),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
                         SecurityStamp = c.String(),
@@ -149,6 +205,9 @@ namespace Hovis.Compliance.Web.Migrations
             DropForeignKey("dbo.People", "SiteId", "dbo.Sites");
             DropForeignKey("dbo.Sites", "SiteCategoryId", "dbo.SiteCategories");
             DropForeignKey("dbo.People", "RoleId", "dbo.PersonRoles");
+            DropForeignKey("dbo.Documents", "DocumentTypeId", "dbo.DocumentTypes");
+            DropForeignKey("dbo.Documents", "DocumentCategoryId", "dbo.DocumentCategories");
+            DropForeignKey("dbo.Documents", "ApplicationId", "dbo.HovisExcellenceApplications");
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
@@ -158,6 +217,9 @@ namespace Hovis.Compliance.Web.Migrations
             DropIndex("dbo.Sites", new[] { "SiteCategoryId" });
             DropIndex("dbo.People", new[] { "SiteId" });
             DropIndex("dbo.People", new[] { "RoleId" });
+            DropIndex("dbo.Documents", new[] { "DocumentCategoryId" });
+            DropIndex("dbo.Documents", new[] { "DocumentTypeId" });
+            DropIndex("dbo.Documents", new[] { "ApplicationId" });
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
@@ -167,6 +229,10 @@ namespace Hovis.Compliance.Web.Migrations
             DropTable("dbo.Sites");
             DropTable("dbo.PersonRoles");
             DropTable("dbo.People");
+            DropTable("dbo.DocumentTypes");
+            DropTable("dbo.Documents");
+            DropTable("dbo.DocumentCategories");
+            DropTable("dbo.HovisExcellenceApplications");
         }
     }
 }

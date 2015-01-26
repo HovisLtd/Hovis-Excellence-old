@@ -6,14 +6,14 @@ namespace Hovis.Compliance.Web.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class AddHovisExcellenceApplicationTable : IMigrationMetadata
+    [GeneratedCode("EntityFramework.Migrations", "6.1.2-31219")]
+    public sealed partial class InitialCreate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddHovisExcellenceApplicationTable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201501211602374_AddHovisExcellenceApplicationTable"; }
+            get { return "201501262238413_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

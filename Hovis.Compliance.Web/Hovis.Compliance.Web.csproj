@@ -203,29 +203,21 @@
     <Compile Include="App_Code\Identity\ApplicationRoleManager.cs" />
     <Compile Include="App_Code\Identity\ApplicationSignInManager.cs" />
     <Compile Include="App_Code\Identity\ApplicationUserManager.cs" />
-    <Compile Include="Migrations\201501201930569_InitialCreate.cs" />
-    <Compile Include="Migrations\201501201930569_InitialCreate.Designer.cs">
-      <DependentUpon>201501201930569_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201501262238413_InitialCreate.cs" />
+    <Compile Include="Migrations\201501262238413_InitialCreate.Designer.cs">
+      <DependentUpon>201501262238413_InitialCreate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201501202100260_MakePersonLastNameRequired.cs" />
-    <Compile Include="Migrations\201501202100260_MakePersonLastNameRequired.Designer.cs">
-      <DependentUpon>201501202100260_MakePersonLastNameRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501211602374_AddHovisExcellenceApplicationTable.cs" />
-    <Compile Include="Migrations\201501211602374_AddHovisExcellenceApplicationTable.Designer.cs">
-      <DependentUpon>201501211602374_AddHovisExcellenceApplicationTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501231243206_AddDocument.cs" />
-    <Compile Include="Migrations\201501231243206_AddDocument.Designer.cs">
-      <DependentUpon>201501231243206_AddDocument.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201501240045392_MakeDocumentFileLinkRequired.cs" />
-    <Compile Include="Migrations\201501240045392_MakeDocumentFileLinkRequired.Designer.cs">
-      <DependentUpon>201501240045392_MakeDocumentFileLinkRequired.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.SeedRoles.cs" />
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Migrations\Configuration.SeedUsers.cs" />
+    <Compile Include="Migrations\Configuration.SeedApplications.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Migrations\Configuration.SeedDocumentTypes.cs" />
+    <Compile Include="Migrations\Configuration.SeedRoles.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Migrations\Configuration.SeedUsers.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\DocumentCategory.cs" />
@@ -511,13 +503,13 @@
     <Content Include="Areas\MasterData\Views\PersonRole\NewOrEdit.cshtml" />
     <Content Include="Areas\MasterData\Views\PersonRole\Delete.cshtml" />
     <Content Include="Areas\MasterData\Views\Site\Delete.cshtml" />
-    <Compile Include="Migrations\Configuration.SeedApplications.cs" />
     <Content Include="Areas\MasterData\Views\DocumentType\Delete.cshtml" />
     <Content Include="Areas\MasterData\Views\DocumentType\Index.cshtml" />
     <Content Include="Areas\MasterData\Views\DocumentType\NewOrEdit.cshtml" />
     <Content Include="Areas\MasterData\Views\DocumentCategory\Delete.cshtml" />
     <Content Include="Areas\MasterData\Views\DocumentCategory\Index.cshtml" />
     <Content Include="Areas\MasterData\Views\DocumentCategory\NewOrEdit.cshtml" />
+    <Compile Include="Migrations\Configuration.SeedDocumentCategories.cs" />
     <None Include="Properties\PublishProfiles\hoviscompliance.pubxml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -572,20 +564,8 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201501201930569_InitialCreate.resx">
-      <DependentUpon>201501201930569_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501202100260_MakePersonLastNameRequired.resx">
-      <DependentUpon>201501202100260_MakePersonLastNameRequired.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501211602374_AddHovisExcellenceApplicationTable.resx">
-      <DependentUpon>201501211602374_AddHovisExcellenceApplicationTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501231243206_AddDocument.resx">
-      <DependentUpon>201501231243206_AddDocument.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201501240045392_MakeDocumentFileLinkRequired.resx">
-      <DependentUpon>201501240045392_MakeDocumentFileLinkRequired.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201501262238413_InitialCreate.resx">
+      <DependentUpon>201501262238413_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
