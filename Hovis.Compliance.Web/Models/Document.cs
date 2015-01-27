@@ -27,21 +27,21 @@ namespace Hovis.Compliance.Web.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Please select a file")]
         public string FileLink { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select an Application")]
         public int ApplicationId { get; set; }
 
         [DisplayName("Application")]
         [ForeignKey("ApplicationId")]
         public virtual HovisExcellenceApplication Applciation { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a Document Type")]
         public int DocumentTypeId { get; set; }
 
         [DisplayName("Document Type")]
         [ForeignKey("DocumentTypeId")]
         public virtual DocumentType DocumentType { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Please select a Document Category")]
         public int DocumentCategoryId { get; set; }
 
         [DisplayName("Document Category")]

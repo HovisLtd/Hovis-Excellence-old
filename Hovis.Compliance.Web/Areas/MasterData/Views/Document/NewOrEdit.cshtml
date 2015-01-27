@@ -100,11 +100,13 @@
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.Document.Applciation)
                                         @Html.DropDownListFor(x => x.Document.ApplicationId, new SelectList(Model.Applcations, "Id", "Name"), new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Document.ApplicationId, "", new { @class = "text-danger" })
                                     </div>
 
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.Document.DocumentCategory)
                                         @Html.DropDownListFor(x => x.Document.DocumentCategoryId, new SelectList(Model.DocumentCategories, "Id", "Name"), new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Document.DocumentCategoryId, "", new { @class = "text-danger" })
                                     </div>
 
                                     <hr />
@@ -112,6 +114,7 @@
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.Document.DocumentType)
                                         @Html.DropDownListFor(x => x.Document.DocumentTypeId, new SelectList(Model.DocumentTypes, "Id", "Name"), new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(x => x.Document.DocumentTypeId, "", new { @class = "text-danger" })
                                     </div>
                                 </div>
                             </section>
