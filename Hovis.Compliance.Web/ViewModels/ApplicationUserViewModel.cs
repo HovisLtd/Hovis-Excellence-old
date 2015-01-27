@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Hovis.Compliance.Web.ViewModels
@@ -6,6 +7,8 @@ namespace Hovis.Compliance.Web.ViewModels
     public class ApplicationUserViewModel
     {
         public string Id { get; set; }
+
+        public DateTime CreatedDate { get; set; }
 
         [Required]
         [EmailAddress]

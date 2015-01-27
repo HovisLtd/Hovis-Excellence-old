@@ -1,5 +1,5 @@
 ﻿@using Hovis.Compliance.Web.Helpers
-@model IEnumerable<Hovis.Compliance.Web.Models.ApplicationUser>
+@model IEnumerable<Hovis.Compliance.Web.ViewModels.ApplicationUserViewModel>
 
 <header class="header">
     <h3>Users</h3>
@@ -27,6 +27,7 @@
                                     <th data-sorted="false">First Name</th>
                                     <th data-sorted="false">Last Name</th>
                                     <th data-sorted="false">Date Added</th>
+                                    <th data-sorted="false">Roles</th>
                                     <th data-sorted="false">&nbsp;</th>
                                 </tr>
                             </thead>
@@ -40,6 +41,21 @@
                                         <td>@user.FirstName</td>
                                         <td>@user.LastName</td>
                                         <td>@user.CreatedDate</td>
+                                        <td>
+                                            @if (!user.SelectedRoles.Any())
+                                            {
+                                                <span>Normal User</span>
+                                            }
+                                            else
+                                            {
+                                                <ul style="list-style-type: none">
+                                                    @foreach (var role in user.SelectedRoles)
+                                                    {
+                                                        <li>@role</li>
+                                                    }
+                                                </ul>
+                                            }
+                                        </td>
                                         <td>
                                             @Html.ActionLink("Edit", "Edit", "ApplicationUsers", new { @id = user.Id }, new { @class = "btn btn-success btn-xs" })
 

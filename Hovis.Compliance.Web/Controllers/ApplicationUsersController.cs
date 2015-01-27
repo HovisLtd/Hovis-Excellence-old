@@ -3,6 +3,7 @@ using Hovis.Compliance.Web.Models;
 using Hovis.Compliance.Web.ViewModels;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -45,7 +46,26 @@ namespace Hovis.Compliance.Web.Controllers
         // GET: ApplicationUsers
         public async Task<ActionResult> Index()
         {
-            return View(await UserManager.Users.ToListAsync());
+            var viewModel = new List<ApplicationUserViewModel>();
+
+            foreach (var applicationUser in await UserManager.Users.ToListAsync())
+            {
+                var roles = await UserManager.GetRolesAsync(applicationUser.Id);
+
+                //this is where you could use AutoMapper - to map between the ApplicationUser and ApplicationUserViewModel
+                //without doing the below manual mapping
+                viewModel.Add(new ApplicationUserViewModel
+                {
+                    Id = applicationUser.Id,
+                    FirstName = applicationUser.FirstName,
+                    LastName = applicationUser.LastName,
+                    Email = applicationUser.Email,
+                    CreatedDate = applicationUser.CreatedDate,
+                    SelectedRoles = roles
+                });
+            }
+
+            return View(viewModel);
         }
 
         // GET: /ApplicationUsers/New
@@ -231,5 +251,10 @@ namespace Hovis.Compliance.Web.Controllers
             }
             return View();
         }
+    }
+
+    public class ApplicationUserListViewModel
+    {
+        public object Users { get; set; }
     }
 }
