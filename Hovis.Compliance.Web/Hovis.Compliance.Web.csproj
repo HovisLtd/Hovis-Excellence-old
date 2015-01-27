@@ -211,6 +211,8 @@
     <Compile Include="Migrations\Configuration.SeedApplications.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Migrations\Configuration.SeedPersonRoles.cs" />
+    <Compile Include="Migrations\Configuration.SeedSiteCategories.cs" />
     <Compile Include="Migrations\Configuration.SeedDocumentTypes.cs" />
     <Compile Include="Migrations\Configuration.SeedRoles.cs">
       <SubType>Code</SubType>

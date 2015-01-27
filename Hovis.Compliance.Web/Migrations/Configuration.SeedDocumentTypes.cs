@@ -7,7 +7,7 @@ namespace Hovis.Compliance.Web.Migrations
     {
         private static void SeedDocumentTypes(ApplicationDbContext context)
         {
-            var documentTypes = new[]
+            var items = new[]
             {
                 new DocumentType {Id = 1, Name = "Policy Manual"},
                 new DocumentType {Id = 2, Name = "Procedures Manual"},
@@ -16,8 +16,9 @@ namespace Hovis.Compliance.Web.Migrations
                 new DocumentType {Id = 5, Name = "Best Practice"},
             };
 
-            foreach (var documentType in documentTypes)
-                context.DocumentTypes.AddOrUpdate(app => app.Id, documentType);
+            //this currently UPDATES it if item with ID exists... so if there's something in there that's changed, it'll be overwritten
+            foreach (var item in items)
+                context.DocumentTypes.AddOrUpdate(app => app.Id, item);
         }
     }
 }

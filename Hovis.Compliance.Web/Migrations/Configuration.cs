@@ -1,3 +1,5 @@
+using System.Web;
+
 namespace Hovis.Compliance.Web.Migrations
 {
     using System.Data.Entity.Migrations;
@@ -13,9 +15,13 @@ namespace Hovis.Compliance.Web.Migrations
         {
             SeedRoles(context);
             SeedUsers(context);
+
             SeedApplications(context);
             SeedDocumentCategories(context);
             SeedDocumentTypes(context);
+
+            SeedSiteCategories(context);
+            SeedPersonRoles(context);
 
             //  This method will be called after migrating to the latest version.
 
