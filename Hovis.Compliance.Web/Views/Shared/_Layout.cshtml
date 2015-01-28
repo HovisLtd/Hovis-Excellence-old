@@ -43,7 +43,7 @@
                 <!-- main navigation -->
                 <nav class="main-navigation">
 
-                    @if (User.IsInRole("Admin"))
+                    @if (User.IsInRole("Admin") || User.IsInRole("Site Admin"))
                     {
                         Html.RenderPartial("~/Areas/MasterData/Views/Shared/MasterDataNavigation.cshtml");
                         <hr />

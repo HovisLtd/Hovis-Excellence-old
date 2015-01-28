@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class DocumentController : MasterDataController
     {
         private ApplicationUserManager _userManager;

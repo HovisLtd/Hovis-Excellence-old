@@ -64,12 +64,6 @@
                                         @Html.LabelFor(x => x.Person.Role)
                                         @Html.DropDownListFor(x => x.Person.RoleId, new SelectList(Model.AvailablePersonRoles, "Id", "Name"), new { @class = "form-control" })
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            @Html.CheckBoxFor(x => x.Person.IsSiteAdmin)
-                                            Site Admin?
-                                        </label>
-                                    </div>
                                 </div>
                             </section>
                         </div>

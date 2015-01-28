@@ -10,7 +10,8 @@ namespace Hovis.Compliance.Web.Migrations
         {
             var rolesToCreate = new[]
             {
-                "Admin"
+                "Admin",
+                "Site Admin",
                 //others can be added here
             };
 

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SiteController : MasterDataController
     {
         public ActionResult Index()

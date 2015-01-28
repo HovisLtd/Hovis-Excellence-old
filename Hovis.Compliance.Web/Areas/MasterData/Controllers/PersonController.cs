@@ -1,5 +1,7 @@
 ﻿using Hovis.Compliance.Web.Areas.MasterData.ViewModels;
 using Hovis.Compliance.Web.Models;
+using System.Collections;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
+    [Authorize(Roles = "Admin, Site Admin")]
     public class PersonController : MasterDataController
     {
         public ActionResult Index()
@@ -38,7 +41,6 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
         public ActionResult New()
         {
             var personRoles = _db.PersonRoles.ToList();
-            var sites = _db.Sites.ToList();
 
             if (!personRoles.Any())
             {
@@ -50,8 +52,17 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
                 return RedirectToAction("Index");
             }
 
+            var sites = GetAvailableSitesForUser();
+
+            if (sites == null)
+            {
+                TempData["error"] = "You were not found in the 'Person' database. Please contact admin";
+                return RedirectToAction("Index");
+            }
+
             if (!sites.Any())
             {
+                //if the user is an admin, it means there's probably not been any added
                 TempData["error"] =
                     string.Format(
                         @"No sites have been created. <a href=""{0}"" class=""alert-link"" > Click here </a> to add a site now.",
@@ -74,7 +85,6 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
         public async Task<ActionResult> Edit(int id)
         {
             var personRoles = _db.PersonRoles.ToList();
-            var sites = _db.Sites.ToList();
 
             var person = await _db.People.
                 SingleOrDefaultAsync(x => x.Id.Equals(id));
@@ -85,7 +95,7 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             var personViewModel = new PersonAddEditViewModel
             {
                 AvailablePersonRoles = personRoles,
-                AvailableSites = sites,
+                AvailableSites = GetAvailableSitesForUser(),
 
                 Person = person
             };
@@ -109,6 +119,27 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             TempData["success"] = "Person " + person.Name + " saved";
 
             return RedirectToAction("Index");
+        }
+
+        private IEnumerable<Site> GetAvailableSitesForUser()
+        {
+            //here's where we get the sites available to choose from
+            //if they're an admin, they can select from all
+            //if site admin, only their site.
+
+            if (User.IsInRole("Admin"))
+                return _db.Sites.ToList();
+
+            //get the 'Person' by email address
+            var person = _db.People.SingleOrDefault(x => x.EmailAddress.Equals(User.Identity.Name));
+
+            //if we didnt' find the person, they're not in the 'people' table
+            //this is different from 'application users'
+            if (person == null)
+                return null;
+
+            return _db.Sites.Where(x => x.Id.Equals(person.SiteId))
+                .ToList();
         }
     }
 }
