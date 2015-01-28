@@ -1,21 +1,18 @@
 ﻿<ul>
     <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
         <a href="@Url.Action("Index", "Home", new{area="Section"})">
-            <i class="fa fa-institution"></i>
             <span>Health & Safety</span>
         </a>
     </li>
 
     <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
         <a href="@Url.Action("Index", "Home", new{area="Section"})">
-            <i class="fa fa-institution"></i>
             <span>Customer Loyalty</span>
         </a>
     </li>
 
     <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
         <a href="@Url.Action("Index", "Home", new{area="Section"})">
-            <i class="fa fa-institution"></i>
             <span>Environment</span>
         </a>
     </li>
@@ -26,7 +23,6 @@
 
     <li>
         <a href="mailto:compliance@hovis.co.uk" style="font-weight: bold; color:#ffe900">
-            <i class="fa fa-envelope"></i>
             <span>Contact</span>
         </a>
     </li>

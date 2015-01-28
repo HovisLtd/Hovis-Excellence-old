@@ -1,7 +1,6 @@
 ﻿<ul>
     <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/masterdata/sites") ? "active" : "") ">
         <a href="@Url.Action("Index", "Site", new{area="MasterData"}, null)">
-            <i class="fa fa-institution"></i>
             <span>Sites</span>
         </a>
 
@@ -22,7 +21,6 @@
     </li>
     <li class="dropdown show-on-hover  @(@Request.Url.AbsolutePath.StartsWith("/masterdata/people") ? "active" : "") ">
         <a href="@Url.Action("Index", "Person", new { area = "MasterData" }, null)">
-            <i class="fa fa-users"></i>
             <span>People</span>
         </a>
 
@@ -44,7 +42,6 @@
 
     <li class="dropdown show-on-hover  @(@Request.Url.AbsolutePath.StartsWith("/masterdata/documents") ? "active" : "") ">
         <a href="@Url.Action("Index", "Document", new { area = "MasterData" }, null)">
-            <i class="fa fa-folder-open"></i>
             <span>Documents</span>
         </a>
         <ul class="dropdown-menu">
@@ -69,7 +66,6 @@
     <hr />
     <li class="dropdown show-on-hover  @(@Request.Url.AbsolutePath.StartsWith("/applicationusers") ? "active" : "") ">
         <a href="@Url.Action("Index", "ApplicationUsers", new { area = "" }, null)">
-            <i class="fa fa-user"></i>
             <span>Application Users</span>
         </a>
         <ul class="dropdown-menu">
