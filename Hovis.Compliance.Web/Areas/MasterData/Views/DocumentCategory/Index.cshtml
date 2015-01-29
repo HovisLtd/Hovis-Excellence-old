@@ -26,7 +26,7 @@
                                     <th class="col-md-5 pd-l-lg ">
                                         <span class="pd-l-sm "></span>Name
                                     </th>
-                                    <th class="col-md-2 ">Number of people</th>
+                                    <th class="col-md-2 ">Number of Documents</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -38,11 +38,13 @@
                                             @item.Name
                                         </td>
                                         <td>
-                                            @item.Documents.Count()
-                                            <a href=" ">[View]</a>
+                                            @item.Documents.Count
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Delete", new {id = item.Id})" c class="btn btn-danger btn-xs">Delete</a>
+                                            @if (item.Documents.Count == 0)
+                                            {
+                                                <a href="@Url.Action("Delete", new {id = item.Id})" c class="btn btn-danger btn-xs">Delete</a>
+                                            }
                                             <a href="@Url.Action("Edit", new { id = item.Id })" c class="btn btn-success btn-xs">Edit</a>
                                         </td>
                                     </tr>

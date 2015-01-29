@@ -55,11 +55,17 @@
                             <section class="panel">
                                 <div class="panel-body">
 
-                                    <div class="form-group">
-                                        @Html.LabelFor(x => x.Person.Site)
-                                        @Html.DropDownListFor(x => x.Person.SiteId, new SelectList(Model.AvailableSites, "Id", "Name"), new { @class = "form-control" })
-                                    </div>
-
+                                    @if (User.IsInRole("Admin"))
+                                    {
+                                        <div class="form-group">
+                                            @Html.LabelFor(x => x.Person.Site)
+                                            @Html.DropDownListFor(x => x.Person.SiteId, new SelectList(Model.AvailableSites, "Id", "Name"), new { @class = "form-control" })
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.HiddenFor(x => x.Person.SiteId)
+                                    }
                                     <div class="form-group">
                                         @Html.LabelFor(x => x.Person.Role)
                                         @Html.DropDownListFor(x => x.Person.RoleId, new SelectList(Model.AvailablePersonRoles, "Id", "Name"), new { @class = "form-control" })

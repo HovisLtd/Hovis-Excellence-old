@@ -68,10 +68,17 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             if (siteCategory == null)
                 return new HttpNotFoundResult();
 
-            _db.SiteCategories.Remove(siteCategory);
-            _db.SaveChanges();
+            if (siteCategory.Sites.Count == 0)
+            {
+                _db.SiteCategories.Remove(siteCategory);
+                _db.SaveChanges();
 
-            TempData["success"] = "Site Category " + siteCategory.Name + " deleted successfully";
+                TempData["success"] = "Site Category " + siteCategory.Name + " deleted successfully";
+            }
+            else
+            {
+                TempData["error"] = "Site Category " + siteCategory.Name + " has Sites associated to it so it cannot be deleted.";
+            }
 
             return RedirectToAction("Index");
         }

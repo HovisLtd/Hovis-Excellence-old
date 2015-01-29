@@ -70,10 +70,17 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             if (personRole == null)
                 return new HttpNotFoundResult();
 
-            _db.PersonRoles.Remove(personRole);
-            _db.SaveChanges();
+            if (personRole.People.Count == 0)
+            {
+                _db.PersonRoles.Remove(personRole);
+                _db.SaveChanges();
 
-            TempData["success"] = "Person role " + personRole.Name + " deleted successfully";
+                TempData["success"] = "Person role " + personRole.Name + " deleted successfully";
+            }
+            else
+            {
+                TempData["error"] = "Person role " + personRole.Name + " has People associated to it so it cannot be deleted.";
+            }
 
             return RedirectToAction("Index");
         }

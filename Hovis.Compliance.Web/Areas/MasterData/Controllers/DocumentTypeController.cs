@@ -73,10 +73,17 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             if (documentType == null)
                 return new HttpNotFoundResult();
 
-            _db.DocumentTypes.Remove(documentType);
-            _db.SaveChanges();
+            if (documentType.Documents.Count == 0)
+            {
+                _db.DocumentTypes.Remove(documentType);
+                _db.SaveChanges();
 
-            TempData["success"] = "Document Type " + documentType.Name + " deleted successfully";
+                TempData["success"] = "Document Type " + documentType.Name + " deleted successfully";
+            }
+            else
+            {
+                TempData["error"] = "Document Type " + documentType.Name + " has Dcouments associated to it so it cannot be deleted.";
+            }
 
             return RedirectToAction("Index");
         }

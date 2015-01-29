@@ -37,9 +37,12 @@
                                         <td>
                                             @siteCategory.Name
                                         </td>
-                                        <td>UNKOWN</td>
+                                        <td>@siteCategory.Sites.Count</td>
                                         <td>
-                                            <a href="@Url.Action("Delete", new {id = siteCategory.Id})" class="btn btn-danger btn-xs">Delete</a>
+                                            @if (siteCategory.Sites.Count == 0)
+                                            {
+                                                <a href="@Url.Action("Delete", new {id = siteCategory.Id})" class="btn btn-danger btn-xs">Delete</a>
+                                            }
                                             <a href="@Url.Action("Edit", new {id = siteCategory.Id})" c class="btn btn-success btn-xs">Edit</a>
                                         </td>
                                     </tr>

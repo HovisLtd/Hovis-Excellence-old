@@ -38,12 +38,14 @@
                                             @personRole.Name
                                         </td>
                                         <td>
-                                            @personRole.People.Count()
-                                            <a href=" ">[View]</a>
+                                            @personRole.People.Count
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Delete", new {id = personRole.Id})" c class="btn btn-danger btn-xs">Delete</a>
-                                            <a href="@Url.Action("Edit", new { id = personRole.Id })" c class="btn btn-success btn-xs">Edit</a>
+                                            @if (personRole.People.Count == 0)
+                                            {
+                                                <a href="@Url.Action("Delete", new {id = personRole.Id})" class="btn btn-danger btn-xs">Delete</a>
+                                            }
+                                            <a href="@Url.Action("Edit", new { id = personRole.Id })" class="btn btn-success btn-xs">Edit</a>
                                         </td>
                                     </tr>
 

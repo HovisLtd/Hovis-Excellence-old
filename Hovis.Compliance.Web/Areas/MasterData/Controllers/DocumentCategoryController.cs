@@ -72,10 +72,17 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
             if (documentCategory == null)
                 return new HttpNotFoundResult();
 
-            _db.DocumentCategories.Remove(documentCategory);
-            _db.SaveChanges();
+            if (documentCategory.Documents.Count == 0)
+            {
+                _db.DocumentCategories.Remove(documentCategory);
+                _db.SaveChanges();
 
-            TempData["success"] = "Document Category " + documentCategory.Name + " deleted successfully";
+                TempData["success"] = "Document Category " + documentCategory.Name + " deleted successfully";
+            }
+            else
+            {
+                TempData["error"] = "Document Category " + documentCategory.Name + " has Dcouments associated to it so it cannot be deleted.";
+            }
 
             return RedirectToAction("Index");
         }

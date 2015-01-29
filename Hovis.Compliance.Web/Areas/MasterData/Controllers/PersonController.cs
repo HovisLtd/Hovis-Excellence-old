@@ -79,6 +79,12 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
                 Person = new Person()
             };
 
+            //if we're a site admin, set the person site id to our site
+            if (User.IsInRole("Site Admin"))
+            {
+                personViewModel.Person.SiteId = sites.First().Id;
+            }
+
             return View("NewOrEdit", personViewModel);
         }
 

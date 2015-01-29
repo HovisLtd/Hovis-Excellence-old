@@ -11,13 +11,22 @@
             <section class="panel">
                 <div class="panel-body ">
 
-                    <p>Do you really want to delete the role - @Model.Name</p>
-
-                    @using (Html.BeginForm("Delete", "PersonRole", FormMethod.Post))
+                    @if (Model.People.Count > 0)
                     {
-                        @Html.HiddenFor(x => x.Id);
-                        <a href="@Url.Action("Index")" class="btn btn-success">No</a>
-                        <input type="submit" class="btn btn-danger" value="Yes" />
+                        <p>This Person Role cannot be deleted as there are people assigned to it.</p>
+                        @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-success" })
+                    }
+                    else
+                    {
+                        <p>Do you really want to delete the role - @Model.Name</p>
+
+                        using (Html.BeginForm("Delete", "PersonRole", FormMethod.Post))
+                        {
+                            @Html.HiddenFor(x => x.Id)
+                            ;
+                            <a href="@Url.Action("Index")" class="btn btn-success">No</a>
+                            <input type="submit" class="btn btn-danger" value="Yes" />
+                        }
                     }
                 </div>
             </section>
