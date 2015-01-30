@@ -1,19 +1,10 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using Hovis.Compliance.Web.Controllers;
-
-namespace Hovis.Compliance.Web.Areas.HealthAndSafety.Controllers
+﻿namespace Hovis.Compliance.Web.Areas.HealthAndSafety.Controllers
 {
-    public class DocumentController : HovisExcellenceController
+    namespace Hovis.Compliance.Web.Areas.CustomerLoyalty.Controllers
     {
-        public ActionResult Index(int id)
+        public class DocumentController : AppShared.DocumentController
         {
-            var document = _db.Documents.SingleOrDefault(x => x.Id.Equals(id));
-
-            if (document == null)
-                return new HttpNotFoundResult();
-
-            return View(document);
+            //no code here since it is handled by base controller
         }
     }
 }
