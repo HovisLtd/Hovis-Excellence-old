@@ -1,27 +1,31 @@
 ﻿<ul>
-    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/masterdata/sites") ? "active" : "") ">
-        <a href="@Url.Action("Index", "Site", new{area="MasterData"}, null)">
-            <span>Sites</span>
-        </a>
+    @if (User.IsInRole("Admin"))
+    {
+        <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/masterdata/sites") ? "active" : "") ">
+            <a href="@Url.Action("Index", "Site", new{area="MasterData"}, null)">
+                <span>Sites</span>
+            </a>
 
-        <ul class="dropdown-menu">
-            <li>
-                @Html.ActionLink("View Sites", "Index", "Site", new { area = "MasterData" }, null)
-            </li>
-            <li>
-                @Html.ActionLink("Add Site", "New", "Site", new { area = "MasterData" }, null)
-            </li>
-
-            <li class="divider"></li>
-
-            @if (User.IsInRole("Admin"))
-            {
+            <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink("Manage Site Categories", "Index", "SiteCategories", new { area = "MasterData" }, null)
+                    @Html.ActionLink("View Sites", "Index", "Site", new { area = "MasterData" }, null)
                 </li>
-            }
-        </ul>
-    </li>
+                <li>
+                    @Html.ActionLink("Add Site", "New", "Site", new { area = "MasterData" }, null)
+                </li>
+
+                <li class="divider"></li>
+
+                @if (User.IsInRole("Admin"))
+                    {
+                    <li>
+                        @Html.ActionLink("Manage Site Categories", "Index", "SiteCategories", new { area = "MasterData" }, null)
+                    </li>
+                    }
+            </ul>
+        </li>
+    }
+
     <li class="dropdown show-on-hover  @(@Request.Url.AbsolutePath.StartsWith("/masterdata/people") ? "active" : "") ">
         <a href="@Url.Action("Index", "Person", new { area = "MasterData" }, null)">
             <span>People</span>
