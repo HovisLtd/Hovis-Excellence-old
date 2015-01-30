@@ -1,4 +1,5 @@
-﻿using Hovis.Compliance.Web.Models;
+﻿using Hovis.Compliance.Web.Controllers;
+using Hovis.Compliance.Web.Models;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class PersonRoleController : MasterDataController
+    public class PersonRoleController : HovisExcellenceController
     {
         public ActionResult Index()
         {

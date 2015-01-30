@@ -1,4 +1,5 @@
 ﻿using Hovis.Compliance.Web.Areas.MasterData.ViewModels;
+using Hovis.Compliance.Web.Controllers;
 using Hovis.Compliance.Web.Identity;
 using Hovis.Compliance.Web.Models;
 using Microsoft.AspNet.Identity;
@@ -13,7 +14,7 @@ using System.Web.Mvc;
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class DocumentController : MasterDataController
+    public class DocumentController : HovisExcellenceController
     {
         private ApplicationUserManager _userManager;
 

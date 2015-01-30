@@ -1,3 +1,4 @@
+using Hovis.Compliance.Web.Controllers;
 using Hovis.Compliance.Web.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Web.Mvc;
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class DocumentCategoryController : MasterDataController
+    public class DocumentCategoryController : HovisExcellenceController
     {
         public ActionResult Index()
         {

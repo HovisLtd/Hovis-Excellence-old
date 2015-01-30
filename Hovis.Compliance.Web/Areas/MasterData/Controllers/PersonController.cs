@@ -1,4 +1,5 @@
 ﻿using Hovis.Compliance.Web.Areas.MasterData.ViewModels;
+using Hovis.Compliance.Web.Controllers;
 using Hovis.Compliance.Web.Models;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Web.Mvc;
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
     [Authorize(Roles = "Admin, Site Admin")]
-    public class PersonController : MasterDataController
+    public class PersonController : HovisExcellenceController
     {
         public ActionResult Index()
         {
@@ -81,9 +82,7 @@ namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 
             //if we're a site admin, set the person site id to our site
             if (User.IsInRole("Site Admin"))
-            {
                 personViewModel.Person.SiteId = sites.First().Id;
-            }
 
             return View("NewOrEdit", personViewModel);
         }

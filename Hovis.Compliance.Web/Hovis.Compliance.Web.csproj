@@ -178,7 +178,6 @@
     <Compile Include="Areas\MasterData\Controllers\DocumentController.cs" />
     <Compile Include="Areas\MasterData\Controllers\DocumentTypeController.cs" />
     <Compile Include="Areas\MasterData\Controllers\HomeController.cs" />
-    <Compile Include="Areas\MasterData\Controllers\MasterDataController.cs" />
     <Compile Include="Areas\MasterData\Controllers\PersonRoleController.cs" />
     <Compile Include="Areas\MasterData\Controllers\SiteCategoriesController.cs" />
     <Compile Include="Areas\MasterData\MasterDataAreaRegistration.cs" />
@@ -196,6 +195,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Areas\MasterData\Controllers\SiteController.cs" />
     <Compile Include="Areas\MasterData\Controllers\PersonController.cs" />
+    <Compile Include="Controllers\HovisExcellenceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

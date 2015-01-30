@@ -1,15 +1,15 @@
-﻿using System.Data.Entity.Validation;
+using System.Data.Entity.Validation;
 using System.Text;
 using System.Web.Mvc;
 
-namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
+namespace Hovis.Compliance.Web.Controllers
 {
-    public class MasterDataController : Controller
+    public class HovisExcellenceController : Controller
     {
         //todo: inject this
         protected readonly ApplicationDbContext _db;
 
-        protected MasterDataController()
+        protected HovisExcellenceController()
         {
             _db = new ApplicationDbContext();
         }

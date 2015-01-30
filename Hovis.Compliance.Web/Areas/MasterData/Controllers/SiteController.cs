@@ -1,4 +1,5 @@
 ﻿using Hovis.Compliance.Web.Areas.MasterData.ViewModels;
+using Hovis.Compliance.Web.Controllers;
 using Hovis.Compliance.Web.Models;
 using System.Data.Entity;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Web.Mvc;
 namespace Hovis.Compliance.Web.Areas.MasterData.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class SiteController : MasterDataController
+    public class SiteController : HovisExcellenceController
     {
         public ActionResult Index()
         {
