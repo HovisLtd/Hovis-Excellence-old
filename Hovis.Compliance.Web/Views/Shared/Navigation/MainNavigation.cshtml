@@ -1,18 +1,18 @@
 ﻿<ul>
-    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
-        <a href="@Url.Action("Index", "Home", new{area="Section"})">
+    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/health-and-safety") ? "active" : "") ">
+        <a href="@Url.Action("Index", "Home", new{area="HealthAndSafety"})">
             <span>Health & Safety</span>
         </a>
     </li>
 
-    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
-        <a href="@Url.Action("Index", "Home", new{area="Section"})">
+    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/customer-loyalty") ? "active" : "") ">
+        <a href="@Url.Action("Index", "Home", new{area="CustomerLoyalty"})">
             <span>Customer Loyalty</span>
         </a>
     </li>
 
-    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/abcabc") ? "active" : "") ">
-        <a href="@Url.Action("Index", "Home", new{area="Section"})">
+    <li class="show-on-hover @(@Request.Url.AbsolutePath.StartsWith("/environment") ? "active" : "") ">
+        <a href="@Url.Action("Index", "Home", new{area="Environment"})">
             <span>Environment</span>
         </a>
     </li>

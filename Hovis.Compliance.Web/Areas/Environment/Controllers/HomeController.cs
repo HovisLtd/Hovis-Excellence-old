@@ -3,14 +3,14 @@ using Hovis.Compliance.Web.Controllers;
 using System.Linq;
 using System.Web.Mvc;
 
-namespace Hovis.Compliance.Web.Areas.CustomerLoyalty.Controllers
+namespace Hovis.Compliance.Web.Areas.Environment.Controllers
 {
     public class HomeController : HovisExcellenceController
     {
         public ActionResult Index()
         {
             var documents = _db.Documents
-                .Where(x => x.ApplicationId.Equals(2)) //this is in the database - it's seeded by the seed methods
+                .Where(x => x.ApplicationId.Equals(3)) //this is in the database - it's seeded by the seed methods
                 .ToList()
                 .GroupBy(x => x.DocumentCategory)
                 .Select(x => new DocumentListViewModel { DocumentCategory = x.Key.Name, Documents = x.ToList() });
