@@ -8,6 +8,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 
 namespace Hovis.Compliance.Web.Controllers
 {
@@ -33,9 +34,12 @@ namespace Hovis.Compliance.Web.Controllers
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
 
+            if (loginInfo == null)
+                return new RedirectResult("/error/not-authorised/");
+
             //if it's not a hovis email, reject
             if (!loginInfo.Email.EndsWith("@hovis.co.uk"))
-                return new HttpUnauthorizedResult();
+                return new RedirectResult("/error/not-authorised/");
 
             //See if the user exists in our database
             var user = await UserManager.FindByEmailAsync(loginInfo.Email);
